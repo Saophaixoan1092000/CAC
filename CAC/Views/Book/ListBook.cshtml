@@ -1,0 +1,72 @@
+﻿@model IEnumerable<CAC.Models.Sach>
+
+@{
+    ViewBag.Title = "ListBook";
+}
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<h1> @Html.ActionLink("Create", "CreateBook")</h1>
+<h2>Danh sách Sách Tiếng Ziệt</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.TextBox("Search")
+<input type="submit" value="TimKiem" />
+}
+
+<br>
+<div>
+    <table class="table table-striped table-dark">
+        <thead>
+            <tr>
+                <th scope="col">@Html.DisplayNameFor(model => model.Tieude)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.Hinh)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.Noidung)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.Gia)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.Tacgia)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.Theloai)</th>
+
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tieude)
+                    </td>
+                    <td>
+
+                        <img src="~/Assets/images/hinh1.jpg" width="90" title="cover" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Noidung)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Gia)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tacgia1.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TheLoai1.TenTL)
+                    </td>
+                    <td>
+                        @Html.ActionLink("EditBook", "EditBook", new { id = item.ID })|
+                        @Html.ActionLink("Details", "Details", new { id = item.ID })|
+                        @Html.ActionLink("Delete", "DeleteBook", new { id = item.ID })
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+
+
+    </table>
+</div>
